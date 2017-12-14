@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,32 +38,32 @@ public class MainController {
 			System.out.println(p);
 			long diffinMillis = p.getEndDate() - p.getStartDate();
 
-			Calendar cal = Calendar.getInstance();
+			Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
 			cal.setTimeInMillis(diffinMillis);
 			calStart.setTimeInMillis(p.getStartDate());
 
 			if (calStart.get(calStart.DAY_OF_WEEK) == 6) {
 				totalElM = cal.get(cal.MINUTE) - 30;
 				totalM += totalElM;
-				totalElH = ((cal.get(cal.HOUR_OF_DAY) - 2) - 6);
+				totalElH = ((cal.get(Calendar.HOUR_OF_DAY)) - 6);
 				totalH += totalElH;
 
 				p.setHourDiff(totalElH);
 				p.setMinDiff(totalElM);
 
 				System.out.println(totalM + "  " + totalH + " " + (cal.get(cal.HOUR_OF_DAY)) + " "
-						+ (cal.get(cal.HOUR_OF_DAY) - 2) + " ore " + cal.get(cal.MINUTE) + " minute ");
+						+ (cal.get(cal.HOUR_OF_DAY) ) + " ore " + cal.get(cal.MINUTE) + " minute ");
 
 			} else {
 				totalElM = cal.get(cal.MINUTE) - 60;
 				totalM += totalElM;
-				totalElH = ((cal.get(cal.HOUR_OF_DAY) - 2) - 8);
+				totalElH = ((cal.get(cal.HOUR_OF_DAY)) - 8);
 				totalH += totalElH;
 
 				p.setHourDiff(totalElH);
 				p.setMinDiff(totalElM);
 
-				System.out.println(totalM + "  " + totalH + " " + (cal.get(cal.HOUR_OF_DAY) - 2) + " ore "
+				System.out.println(totalM + "  " + totalH + " " + (cal.get(cal.HOUR_OF_DAY) ) + " ore "
 						+ cal.get(cal.MINUTE) + " minute ");
 			}
 
