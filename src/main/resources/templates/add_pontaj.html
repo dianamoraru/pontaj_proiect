@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Add a note</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+
+			<div class="col-sm-6">
+				<h4 class="text-left">Adauga pontaj:</h4>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<form action="/addPontajDate">
+				<div class="row">
+					<p>Alege data</p>
+					<div class="col-xs-2">
+						<input type="date" class="form-control" id="startDate"
+							name="startDate" required="true" />
+					</div>
+				</div>
+				<div class="row">
+					<p>Intrare</p>
+					<div class="col-xs-2">
+						<input type="time" class="form-control" id="startDateTime"
+							name="startDateTime" required="true" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12" style="height: 25px;"></div>
+				</div>
+				<div class="row">
+					<p>Iesire</p>
+
+					<div class="col-xs-2">
+						<input type="time" class="form-control" id="endDateTime"
+							name="endDateTime" required="true" />
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-xs-12" style="height: 25px;"></div>
+				</div>
+				<div class="row">
+					<div class="col-xs-3">
+						<input type="submit" class="btn btn-info" id="createBtn"
+							value="OK" />
+					</div>
+
+				</div>
+			</form>
+		</div>
+	</div>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
+</body>
+</html>
+

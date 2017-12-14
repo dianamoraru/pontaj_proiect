@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Pontaj</title>
+</head>
+<body>
+	<div class="row">
+		<div class="col-xs-12" style="height: 100px;"></div>
+	</div>
+	<div class="container">
+
+
+		<table class="table" style="width: auto;">
+			<thead>
+				<tr>
+					<th class="col-md-1">No</th>
+					<th class="col-md-1">Start</th>
+					<th class="col-md-1">End</th>
+					<th class="col-md-1">Ore lucrate</th>
+					<th class="col-md-1">Minute Lucrate</th>
+					<th class="col-md-1">Diferenta ore</th>
+					<th class="col-md-1">Diferenta minute</th>
+
+				</tr>
+			</thead>
+			<tbody>
+
+				<th:block th:each="element : ${pontajList}">
+					<tr>
+						<td th:text="${#ids.seq('')} "></td>
+						<td
+							th:text="${#dates.format(element.startDate, 'dd-MM-yyyy HH:mm')}"></td>
+						<td
+							th:text="${#dates.format(element.endDate, 'dd-MM-yyyy HH:mm')}"></td>
+						<td
+							th:text="${#dates.hour(element.endDate)} - ${#dates.hour(element.startDate)}"></td>
+						<td
+							th:text="${#dates.minute(element.endDate)} - ${#dates.minute(element.startDate)}"></td>
+
+						<div th:switch="${#dates.dayOfWeek(element.StartDate)}">
+							<td th:case="6" ><p
+									th:text="(${#dates.hour(element.endDate)} - ${#dates.hour(element.startDate)}) - 6 "></p></td>
+							<td th:case="*"><p
+									th:text="(${#dates.hour(element.endDate)} - ${#dates.hour(element.startDate)}) - 8"></p></td>
+						</div>
+
+						<div th:switch="${#dates.dayOfWeek(element.StartDate)}">
+							<td th:case="6"><p
+									th:text="(${#dates.minute(element.endDate)} - ${#dates.minute(element.startDate)}) - 30 "></p></td>
+							<td th:case="*"><p
+									th:text="(${#dates.minute(element.endDate)} - ${#dates.minute(element.startDate)}) - 60"></p></td>
+						</div>
+				
+
+
+					</tr>
+				</th:block>
+
+			</tbody>
+		</table>
+		<div class="row">
+		<div class="col-xs-12" style="height: 25px;"></div>
+	</div>
+	 <div class="col-xs-3">          
+                     <input th:value="${total}" type="text" class="form-control" id="total" name="total"/>
+                  </div>
+			<div class="row">
+		<div class="col-xs-12" style="height: 100px;"></div>
+	</div>
+
+		<form action="/addPontaj">
+			<div class="row">
+				<div class="col-xs-3">
+					<input type="submit" class="btn btn-info" id="addPontaj"
+						value="Adauga pontaj" />
+				</div>
+
+			</div>
+		</form>
+
+	</div>
+
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
+</body>
+</html>
+
